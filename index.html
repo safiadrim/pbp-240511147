@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a56">
+  <meta name="description" content="Website pribadi untuk menyimpan dan membagikan materi kuliah serta tugas Safi Adri Maulana.">
+  <title>Ruang Kuliah | Safi Adri Maulana</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">RK</span><span>Ruang Kuliah<small>Arsip materi & tugas</small></span></a>
+    <a class="github-link" href="https://github.com" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">WEBSITE PERKULIAHAN PRIBADI</span>
+        <h1>Semua materi dan tugas,<br><span>tersimpan rapi.</span></h1>
+        <p>Tempat mengarsipkan materi perkuliahan dan tugas agar mudah dibuka kembali dari laptop maupun HP.</p>
+        <a class="primary-link" href="#arsip">Lihat arsip <span>↓</span></a>
+      </div>
+      <div class="profile-card">
+        <div class="avatar">SA</div>
+        <div class="profile-label">DATA MAHASISWA</div>
+        <h2>Safi Adri Maulana</h2>
+        <div class="profile-row"><span>NIM</span><strong>240511147</strong></div>
+        <div class="profile-row"><span>Kelas</span><strong>TI24B</strong></div>
+        <div class="profile-row"><span>Prodi</span><strong>Teknik Informatika</strong></div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Ringkasan arsip">
+      <div class="stat"><span class="stat-icon">▤</span><div><strong id="taskCount">—</strong><span>Arsip tugas</span></div></div>
+      <div class="stat"><span class="stat-icon">▧</span><div><strong id="materialCount">—</strong><span>Materi kuliah</span></div></div>
+      <div class="stat"><span class="stat-icon">☁</span><div><strong>GitHub</strong><span>Penyimpanan arsip</span></div></div>
+    </section>
+
+    <section class="section-heading" id="arsip">
+      <div><span class="eyebrow">KOLEKSI FILE</span><h2>Arsip perkuliahan</h2><p>File yang diunggah akan ditampilkan di sini agar bisa dilihat atau diunduh.</p></div>
+      <button class="outline-button" id="refreshBtn" type="button">↻ Muat ulang</button>
+    </section>
+
+    <div class="tabs" role="tablist" aria-label="Jenis arsip">
+      <button class="tab active" data-tab="tugas" role="tab" aria-selected="true">Tugas</button>
+      <button class="tab" data-tab="materi" role="tab" aria-selected="false">Materi kuliah</button>
+    </div>
+    <div class="toolbar">
+      <label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Cari keterangan atau nama file..."></label>
+      <span id="resultLabel" class="result-label">Memuat arsip...</span>
+    </div>
+    <div id="fileList" class="file-grid" aria-live="polite"><div class="empty-state">Sedang memuat arsip…</div></div>
+
+    <section class="upload-section" id="unggah">
+      <div class="upload-intro">
+        <span class="eyebrow">AREA PENGELOLA</span>
+        <h2>Unggah file baru</h2>
+        <p>Masukkan kata sandi pengelola untuk mengunggah tugas atau materi. File akan disimpan ke repository GitHub yang sudah diatur.</p>
+        <div class="notice">Jangan masukkan token GitHub ke halaman website. Token hanya disimpan sebagai Environment Variable di Vercel.</div>
+      </div>
+      <form id="uploadForm" class="upload-card">
+        <label>Kata sandi pengelola<input id="adminPassword" type="password" autocomplete="current-password" placeholder="Kata sandi unggah" required></label>
+        <label>Jenis unggahan<select id="fileType" required><option value="tugas">Tugas</option><option value="materi">Materi kuliah</option></select></label>
+        <label>Keterangan tugas / materi<input id="description" type="text" maxlength="120" placeholder="Contoh: Tugas pertemuan 4" required></label>
+        <label>Pilih file<input id="fileInput" type="file" required></label>
+        <p class="file-help">Nama file akan dirapikan otomatis. Maksimum ukuran file mengikuti batas konfigurasi server; disarankan di bawah 5 MB.</p>
+        <button class="primary-button" id="uploadBtn" type="submit">Unggah ke arsip <span>↑</span></button>
+        <p id="uploadMessage" class="form-message" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer><div class="footer-inner"><span>© <span id="year"></span> Safi Adri Maulana</span><span>Dibuat untuk arsip perkuliahan · TI24B</span></div></footer>
+  <script src="app.js"></script>
+</body>
+</html>
